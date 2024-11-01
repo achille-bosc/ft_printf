@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abosc <abosc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 19:38:51 by abosc             #+#    #+#             */
-/*   Updated: 2024/11/01 22:00:19 by abosc            ###   ########.fr       */
+/*   Created: 2024/10/22 21:15:31 by abosc             #+#    #+#             */
+/*   Updated: 2024/10/23 19:20:08 by abosc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Libft/libft.h"
-#include <stdarg.h>
-#include <stdint.h>
-#include <stdlib.h>
+#include "libft.h"
 
-int	ft_printchar(int c);
-int	ft_printnbr(int num);
-int	ft_printstr(const char *str);
-int	ft_print_unsigned(unsigned int n);
-int	ft_print_hex(unsigned int num, const char format);
-int	ft_print_ptr(uintptr_t ptr);
-int	ft_printpercent(void);
-int	ft_printf(const char *str, ...);
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n *= -1;
+	}
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	ft_putchar_fd((n % 10) + '0', fd);
+	return ;
+}
+
+// int main()
+// {
+// 	ft_putnbr_fd(50, 1);
+// 	return (0);
+// }

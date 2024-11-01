@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abosc <abosc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 20:25:33 by abosc             #+#    #+#             */
-/*   Updated: 2024/11/01 22:07:42 by abosc            ###   ########.fr       */
+/*   Created: 2024/10/16 14:10:33 by abosc             #+#    #+#             */
+/*   Updated: 2024/10/23 17:18:02 by abosc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-static int	ft_numlen(int num)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int	i;
+	size_t	i;
+	int		j;
+	int		len_small;
 
 	i = 0;
-	while (num)
+	len_small = ft_strlen(little);
+	if (len_small == 0)
+		return ((char *)big);
+	while (i < len && *big)
 	{
-		num /= 10;
+		j = 0;
+		while (j < len_small && i + j < len)
+		{
+			if (big[j] != little[j])
+				break ;
+			j++;
+		}
+		if (j == len_small)
+			return ((char *)big);
 		i++;
+		big++;
 	}
-	return (i);
-}
-
-int	ft_printnbr(int num)
-{
-	ft_putnbr_fd(num, 1);
-	return (ft_numlen(num));
+	return (NULL);
 }

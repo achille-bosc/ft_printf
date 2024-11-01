@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abosc <abosc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 19:38:51 by abosc             #+#    #+#             */
-/*   Updated: 2024/11/01 22:00:19 by abosc            ###   ########.fr       */
+/*   Created: 2024/10/17 16:07:29 by abosc             #+#    #+#             */
+/*   Updated: 2024/10/25 17:56:51 by abosc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Libft/libft.h"
-#include <stdarg.h>
-#include <stdint.h>
-#include <stdlib.h>
+#include "libft.h"
 
-int	ft_printchar(int c);
-int	ft_printnbr(int num);
-int	ft_printstr(const char *str);
-int	ft_print_unsigned(unsigned int n);
-int	ft_print_hex(unsigned int num, const char format);
-int	ft_print_ptr(uintptr_t ptr);
-int	ft_printpercent(void);
-int	ft_printf(const char *str, ...);
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		total_len;
+	char	*s3;
+
+	total_len = ft_strlen(s1) + ft_strlen(s2);
+	s3 = ft_calloc(total_len + 1, sizeof(char));
+	if (!s3)
+		return (NULL);
+	ft_strlcat(s3, s1, ft_strlen(s1) + 1);
+	ft_strlcat(s3, s2, total_len + 1);
+	s3[total_len] = '\0';
+	return (s3);
+}

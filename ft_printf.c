@@ -6,7 +6,7 @@
 /*   By: abosc <abosc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 04:47:15 by achillebosc       #+#    #+#             */
-/*   Updated: 2024/11/01 20:47:41 by abosc            ###   ########.fr       */
+/*   Updated: 2024/11/01 22:00:08 by abosc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,4 @@ int	ft_printf(const char *str, ...)
 	}
 	va_end(args);
 	return (print_length);
-}
-
-int	main(void)
-{
-	printf("%i", printf("coucou"));
-	return (0);
 }
