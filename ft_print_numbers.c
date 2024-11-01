@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abosc <abosc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 19:38:51 by abosc             #+#    #+#             */
-/*   Updated: 2024/11/01 20:45:30 by abosc            ###   ########.fr       */
+/*   Created: 2024/11/01 20:25:33 by abosc             #+#    #+#             */
+/*   Updated: 2024/11/01 20:43:44 by abosc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-#include <stdarg.h>
-#include <stdint.h>
-#include <stdlib.h>
 
-int	ft_printchar(int c);
-int	ft_printnbr(int num);
-int	ft_printstr(const char *str);
-int	ft_print_unsigned(unsigned int n);
-int	ft_print_hex(unsigned int num, const char format);
-int	ft_print_ptr(uintptr_t ptr);
-int	ft_printpercent(void);
+static int	ft_numlen(int num)
+{
+	int	i;
+
+	i = 0;
+	while (num)
+	{
+		num /= 10;
+		i++;
+	}
+	return (i);
+}
+
+int	ft_printnbr(int num)
+{
+	ft_putnbr_fd(num, 1);
+	return (ft_numlen(num));
+}
