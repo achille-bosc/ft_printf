@@ -6,7 +6,7 @@
 /*   By: abosc <abosc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 04:47:15 by achillebosc       #+#    #+#             */
-/*   Updated: 2024/11/01 23:58:43 by abosc            ###   ########.fr       */
+/*   Updated: 2024/11/03 08:26:18 by abosc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_formats(va_list args, const char format)
 	else if (format == 'p')
 		print_length += ft_print_ptr(va_arg(args, unsigned long long));
 	else if (format == 'd' || format == 'i')
-		print_length += ft_printnbr(va_arg(args, int));
+		print_length += ft_print_nbr(va_arg(args, int));
 	else if (format == 'u')
 		print_length += ft_print_unsigned(va_arg(args, unsigned int));
 	else if (format == 'x')
@@ -59,23 +59,11 @@ int	ft_printf(const char *str, ...)
 			i++;
 		}
 		else
+		{
 			print_length += ft_printchar(str[i]);
+		}
 		i++;
 	}
 	va_end(args);
 	return (print_length);
 }
-// int	main(void)
-// {
-// 	ft_printf("Test\n");
-// 	printf("test\n");
-// 	ft_printf("Test%i\n", 2);
-// 	printf("test%i\n", 2);
-// 	ft_printf("Test, %i, %c\n", 3, 'a');
-// 	printf("test, %i, %c\n", 3, 'a');
-// 	ft_printf("Test, %i, %c, %s\n", 4, 'a', "encore un Test");
-// 	printf("test, %i, %c, %s\n", 4, 'a', "encore un Test");
-// 	ft_printf("Test, %i, %c, %s\n", 4, 'a', "encore un Test");
-// 	printf("test, %i, %c, %s\n", 4, 'a', "encore un Test");
-// 	return (0);
-// }
