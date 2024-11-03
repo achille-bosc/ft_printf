@@ -6,7 +6,7 @@
 /*   By: abosc <abosc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 13:20:43 by ajordan-          #+#    #+#             */
-/*   Updated: 2024/11/01 20:21:42 by abosc            ###   ########.fr       */
+/*   Updated: 2024/11/02 00:14:21 by abosc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	ft_print_ptr(uintptr_t ptr)
 	int	print_length;
 
 	print_length = 0;
+	if (!ptr)
+		return (write(1, "(nil)", 5));
 	print_length += write(1, "0x", 2);
 	if (ptr == 0)
 		print_length += write(1, "0", 1);

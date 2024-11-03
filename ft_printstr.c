@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abosc <abosc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 20:25:33 by abosc             #+#    #+#             */
-/*   Updated: 2024/11/02 00:19:37 by abosc            ###   ########.fr       */
+/*   Created: 2024/11/01 22:29:07 by abosc             #+#    #+#             */
+/*   Updated: 2024/11/02 00:03:39 by abosc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_numlen(int num)
+int	ft_printstr(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (num < 0)
-		i += 1;
-	while (num)
+	if (!str)
 	{
-		num /= 10;
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (str[i])
+	{
+		ft_putchar_fd(str[i], 1);
 		i++;
 	}
-	return (i);
-}
-
-int	ft_printnbr(int num)
-{
-	if (num == 0)
-		return (1);
-	ft_putnbr_fd(num, 1);
-	return (ft_numlen(num));
+	return (ft_strlen(str));
 }

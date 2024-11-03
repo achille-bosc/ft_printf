@@ -6,11 +6,17 @@
 /*   By: abosc <abosc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 04:47:15 by achillebosc       #+#    #+#             */
-/*   Updated: 2024/11/01 22:00:08 by abosc            ###   ########.fr       */
+/*   Updated: 2024/11/01 23:58:43 by abosc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_printchar(int c)
+{
+	write(1, &c, 1);
+	return (1);
+}
 
 int	ft_formats(va_list args, const char format)
 {
@@ -32,7 +38,7 @@ int	ft_formats(va_list args, const char format)
 	else if (format == 'X')
 		print_length = ft_print_hex(va_arg(args, unsigned int), format);
 	else if (format == '%')
-		print_length += ft_printpercent();
+		print_length += ft_printchar('%');
 	return (print_length);
 }
 
@@ -59,3 +65,17 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (print_length);
 }
+// int	main(void)
+// {
+// 	ft_printf("Test\n");
+// 	printf("test\n");
+// 	ft_printf("Test%i\n", 2);
+// 	printf("test%i\n", 2);
+// 	ft_printf("Test, %i, %c\n", 3, 'a');
+// 	printf("test, %i, %c\n", 3, 'a');
+// 	ft_printf("Test, %i, %c, %s\n", 4, 'a', "encore un Test");
+// 	printf("test, %i, %c, %s\n", 4, 'a', "encore un Test");
+// 	ft_printf("Test, %i, %c, %s\n", 4, 'a', "encore un Test");
+// 	printf("test, %i, %c, %s\n", 4, 'a', "encore un Test");
+// 	return (0);
+// }
