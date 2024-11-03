@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -ILibft
+CFLAGS = -Wall -Wextra -Werror -ILibft -g
 NAME = libftprintf.a
 
 PREFIX = Libft/

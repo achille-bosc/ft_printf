@@ -6,7 +6,7 @@
 /*   By: abosc <abosc@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:51:31 by abosc             #+#    #+#             */
-/*   Updated: 2024/11/01 22:33:33 by abosc            ###   ########.fr       */
+/*   Updated: 2024/11/03 08:41:58 by abosc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,13 @@ char	*ft_utoa(unsigned int n)
 	len = ft_num_len(n);
 	num = ft_calloc((len + 1), sizeof(char));
 	if (!num)
-		return (0);
+		return (NULL);
 	while (n != 0)
 	{
 		num[len - 1] = n % 10 + 48;
 		n = n / 10;
 		len--;
 	}
-	free(num);
 	return (num);
 }
 
